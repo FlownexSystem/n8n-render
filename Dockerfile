@@ -1,12 +1,6 @@
 FROM ghcr.io/n8n-io/n8n:latest
 
-ENV N8N_USER_FOLDER=/data/.n8n
-ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+# Render-এর জন্য ডিফল্ট পোর্ট এক্সপোজ করা
+EXPOSE 10000
 
-USER root
-RUN mkdir -p /data/.n8n && chown -R node:node /data && chmod -R 700 /data
-
-USER node
-WORKDIR /data
-
-CMD ["start"]
+CMD ["n8n", "start"]
